@@ -39,3 +39,29 @@ code/
 ├── 04_erp_analysis/
 ├── 05_maintenance_slow_wave/
 └── 06_robustness/
+
+## Repository Structure
+
+### `01_preprocessing_and_validation`
+
+Scripts related to preprocessing checks, task-phase mapping, and validation procedures used before the main EEG analyses.
+
+### `02_behavior`
+
+Scripts for behavioral data extraction, reconstruction of response-related intervals, condition-level summaries, and statistical comparisons.
+
+### `03_spectral_analysis`
+
+Primary EEG spectral analyses at the channel, ROI, and focused posterior-region levels.
+
+### `04_erp_analysis`
+
+Time-domain EEG analyses, including amplitude-window comparisons and the exploratory correct-versus-incorrect analysis.
+
+### `05_maintenance_slow_wave`
+
+Analyses of sustained EEG amplitude during the maintenance period, including participant-level condition comparisons and robustness checks.
+
+### `06_robustness`
+
+Sensitivity and robustness analyses, including equal-duration phase comparisons, ICA-based sensitivity analysis, band-restricted analyses, and leave-one-participant-out stability analysis.
