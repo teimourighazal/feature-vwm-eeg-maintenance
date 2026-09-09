@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+
+# MATLAB temporary files
+*.asv
+*.autosave
+*.m~
+*.tmp
+
+# MATLAB crash files
+matlab_crash_dump.*
+
+# Logs
+*.log
+
+# Raw EEG / human participant data
+*.edf
+*.bdf
+*.set
+*.fdt
+
+# MATLAB data files
+*.mat
+
+# Private/local data folders
+data_raw/
+raw_data/
+Subjects/
+private_data/
+
+# Local analysis outputs
+temp/
+cache/
+
+# Editor files
+.vscode/
+.idea/
