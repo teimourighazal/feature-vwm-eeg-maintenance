@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite this repository and the associated article."
+title: "Feature-Based Visual Working Memory EEG Analysis"
+type: software
+authors:
+  - family-names: "Teimouri"
+    given-names: "Ghazal"
+year: 2026
+repository-code: "https://github.com/teimourighazal/feature-vwm-eeg-maintenance"
+license: MIT
