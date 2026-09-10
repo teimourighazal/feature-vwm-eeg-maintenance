@@ -2,10 +2,10 @@
 % Final behavioral QC and summary after STEP02C.
 %
 % Input:
-%   /Users/ghazal/Desktop/Article2/Analysis/STEP02C_Behavior_Extract
+%   STEP02C_Behavior_Extract
 %
 % Output:
-%   /Users/ghazal/Desktop/Article2/Analysis/STEP02D_Behavior_Final
+%   STEP02D_Behavior_Final under the selected Article2 Analysis folder.
 %
 % This script:
 %   1) Reads trial-level behavior from STEP02C.
@@ -14,24 +14,26 @@
 %   4) Recomputes final subject-level and group-level behavior.
 %   5) Saves final stats and figures.
 %
-% Expected current outcome:
-%   Usable behavior before duplicate-run screening: N = 7
-%   Conservative final independent behavior sample: N = 6
-
 clear; clc; close all;
 
 %% Paths
-rootDir = '/Users/ghazal/Desktop/Article2/Analysis';
-inDir   = fullfile(rootDir, 'STEP02C_Behavior_Extract');
-outDir  = fullfile(rootDir, 'STEP02D_Behavior_Final');
+rootDir = uigetdir(pwd, 'Select the Article2 Analysis folder');
+if isequal(rootDir, 0)
+    error('Article2 Analysis folder was not selected.');
+end
 
+inDir  = fullfile(rootDir, 'STEP02C_Behavior_Extract');
+outDir = fullfile(rootDir, 'STEP02D_Behavior_Final');
 if ~exist(outDir, 'dir'); mkdir(outDir); end
 
 trialFile = fullfile(inDir, 'Behavior_TrialLevel.csv');
 availFile = fullfile(inDir, 'Behavior_Availability_BySubject.csv');
 
 if ~exist(trialFile, 'file')
-    error('Behavior_TrialLevel.csv not found. Run STEP02C first.');
+    error('Behavior_TrialLevel.csv not found. Run STEP02C_BEHAVIOR_EXTRACT first.');
+end
+if ~exist(availFile, 'file')
+    error('Behavior_Availability_BySubject.csv not found. Run STEP02C_BEHAVIOR_EXTRACT first.');
 end
 
 Ttrial = readtable(trialFile);

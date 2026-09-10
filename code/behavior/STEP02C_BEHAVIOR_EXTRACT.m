@@ -19,17 +19,21 @@
 %   TriggerCode
 %
 % Outputs:
-%   /Users/ghazal/Desktop/Article2/Analysis/STEP02C_Behavior_Extract
+%   STEP02C_Behavior_Extract under the selected Article2 Analysis folder.
 
 clear; clc; close all;
 
 %% Config
 cfg = struct();
 
-cfg.analysisRoot = '/Users/ghazal/Desktop/Article2/Analysis';
+%% Paths
+cfg.analysisRoot = uigetdir(pwd, 'Select the Article2 Analysis folder');
+if isequal(cfg.analysisRoot, 0)
+    error('Article2 Analysis folder was not selected.');
+end
+
 cfg.inspectDir = fullfile(cfg.analysisRoot, 'STEP02B_Behavior_TableInspect');
 cfg.outDir = fullfile(cfg.analysisRoot, 'STEP02C_Behavior_Extract');
-
 if ~exist(cfg.outDir, 'dir'); mkdir(cfg.outDir); end
 
 cfg.candidateTablesFile = fullfile(cfg.inspectDir, 'STEP02B_Behavior_CandidateTables.csv');
@@ -43,14 +47,14 @@ cfg.maxRT_sec = 10.50;
 cfg.preferredTable = 'T_allCond';
 cfg.fallbackTables = {'T_cond1_40','T_cond2_60','T_cond3_16'};
 
-% Condition labels. Adjust later if task coding is confirmed differently.
+% Condition labels. Adjust only if task coding is confirmed differently.
 cfg.conditionLabels = containers.Map({1,2,3}, {'color','orientation','conjunction'});
 
 fprintf('\n=== STEP02C BEHAVIOR EXTRACT ===\n');
 fprintf('Output folder:\n%s\n', cfg.outDir);
 
 if ~exist(cfg.candidateTablesFile, 'file')
-    error('Candidate table file not found. Run STEP02B first.');
+    error('Candidate table file not found. Run STEP02B_BEHAVIOR_TABLE_INSPECT first.');
 end
 
 Tcand = readtable(cfg.candidateTablesFile);

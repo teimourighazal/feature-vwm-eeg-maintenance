@@ -9,11 +9,11 @@
 %
 % Recommended input:
 %   STEP03T T_phases selected map:
-%   /Users/ghazal/Desktop/Article2/Analysis/STEP03T_TPhasesOnly/STEP03T_TPhases_SelectedMap.csv
+%   STEP03T_TPhasesOnly/STEP03T_TPhases_SelectedMap.csv
 %
 % Output:
-%   /Users/ghazal/Desktop/Article2/Analysis/STEP04A0_Behavior_SourceAudit
-%   /Users/ghazal/Desktop/Article2/Analysis/Result/STEP04A0_Behavior_SourceAudit
+%   STEP04A0_Behavior_SourceAudit
+%   Result/STEP04A0_Behavior_SourceAudit
 %
 % Main outputs:
 %   BehaviorSourceAudit_FileLevel.csv
@@ -27,8 +27,13 @@
 clear; clc; close all;
 
 %% Paths
-rootDir = '/Users/ghazal/Desktop/Article2/Analysis';
-tphaseMapDefault = fullfile(rootDir, 'STEP03T_TPhasesOnly', 'STEP03T_TPhases_SelectedMap.csv');
+rootDir = uigetdir(pwd, 'Select the Article2 Analysis folder');
+if isequal(rootDir, 0)
+    error('Article2 Analysis folder was not selected.');
+end
+
+tphaseMapDefault = fullfile(rootDir, 'STEP03T_TPhasesOnly', ...
+    'STEP03T_TPhases_SelectedMap.csv');
 
 outDir = fullfile(rootDir, 'STEP04A0_Behavior_SourceAudit');
 resultRoot = fullfile(rootDir, 'Result');

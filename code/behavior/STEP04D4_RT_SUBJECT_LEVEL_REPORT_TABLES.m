@@ -13,8 +13,8 @@
 %   STEP04D_RT_FinalReport/RT_FinalReport_PairwiseTable_EEG_ALIGNED.csv
 %
 % Output:
-%   /Users/ghazal/Desktop/Article2/Analysis/STEP04D4_RT_SubjectLevelReport
-%   /Users/ghazal/Desktop/Article2/Analysis/Result/STEP04D4_RT_SubjectLevelReport
+%   STEP04D4_RT_SubjectLevelReport
+%   Result/STEP04D4_RT_SubjectLevelReport
 %
 % Main outputs:
 %   RT_SubjectLevel_ConditionDescriptives_EEG_ALIGNED.csv
@@ -24,7 +24,12 @@
 
 clear; clc; close all;
 
-rootDir = '/Users/ghazal/Desktop/Article2/Analysis';
+%% Paths
+rootDir = uigetdir(pwd, 'Select the Article2 Analysis folder');
+if isequal(rootDir, 0)
+    error('Article2 Analysis folder was not selected.');
+end
+
 outDir = fullfile(rootDir, 'STEP04D4_RT_SubjectLevelReport');
 resultRoot = fullfile(rootDir, 'Result');
 resultOutDir = fullfile(resultRoot, 'STEP04D4_RT_SubjectLevelReport');
